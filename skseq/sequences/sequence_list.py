@@ -58,8 +58,8 @@ class SequenceList(object):
             - x is the sequence of  observations,
             - y is the sequence of states."""
         num_seqs = len(self.seq_list)
-        x_ids = [x_dict.get_label_id(name) for name in x]
-        y_ids = [y_dict.get_label_id(name) for name in y]
+        x_ids = [x_dict[name] for name in x]
+        y_ids = [y_dict[name] for name in y]
         self.seq_list.append(seq.Sequence(x_ids, y_ids))
 
     def save(self, file):

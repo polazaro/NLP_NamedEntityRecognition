@@ -35,12 +35,5 @@ class ExtendedFeatures(IDFeatures):
             # Append feature.
             if feat_id != -1:
                 features.append(feat_id)
-
-        if str.isdigit(word):
-            # Generate feature name.
-            feat_name = "isdigit::%s" % y_name
-            # Get feature ID from name.
-            feat_id = self.add_feature(feat_name)
-            # Append feature.
-            if feat_id != -1:
-                features.append(feat_id)
+        return features
+		

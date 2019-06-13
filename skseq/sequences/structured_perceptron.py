@@ -1,6 +1,7 @@
 from __future__ import division
 import numpy as np
 import skseq.sequences.discriminative_sequence_classifier as dsc
+import skseq
 #import skseq.sequences.sequence as seq
 
 class StructuredPerceptron(dsc.DiscriminativeSequenceClassifier):
@@ -88,7 +89,7 @@ class StructuredPerceptron(dsc.DiscriminativeSequenceClassifier):
         return acc
 
     def predict_tags_given_words(self, words):
-        sequence =  seq.Sequence(x=words, y=words)
+        sequence =  skseq.sequences.sequence.Sequence(x=words, y=words)
         predicted_sequence, _ = self.viterbi_decode(sequence)
         return predicted_sequence.y
 
