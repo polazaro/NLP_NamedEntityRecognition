@@ -28,7 +28,7 @@ class ExtendedFeatures(IDFeatures):
             features.append(feat_id)
 
         #Hyphen
-        if str.find(word, "-"):
+        if str.find(word, "-") != -1:
             # Generate feature name.
             feat_name = "hyphen::%s" % y_name
             # Get feature ID from name.
@@ -36,26 +36,48 @@ class ExtendedFeatures(IDFeatures):
             # Append feature.
             if feat_id != -1:
                 features.append(feat_id)
-
-        #If there is an upper letter
-        if not str.islower(word):
+                
+        #If there is a capital letter at the beggining
+        if word[0].isupper():
             # Generate feature name.
-            feat_name = "upper::%s" % y_name
+            feat_name = "upper_ini::%s" % y_name
             # Get feature ID from name.
             feat_id = self.add_feature(feat_name)
             # Append feature.
             if feat_id != -1:
                 features.append(feat_id)
-
+            
+            
         #If it ends with a point
-        if str.endswith(word, "."):
+#        if str.endswith(word, "."):
+#            # Generate feature name.
+#            feat_name = "endpoint::%s" % y_name
+#            # Get feature ID from name.
+#            feat_id = self.add_feature(feat_name)
+#            # Append feature.
+#            if feat_id != -1:
+#                features.append(feat_id)
+
+#        #If there is an upper letter
+#        if not str.islower(word):
+#            # Generate feature name.
+#            feat_name = "upper::%s" % y_name
+#            # Get feature ID from name.
+#            feat_id = self.add_feature(feat_name)
+#            # Append feature.
+#            if feat_id != -1:
+#                features.append(feat_id)
+                
+        #If there is a capital letter at the beggining
+        if str.endswith(word,'ed'):
             # Generate feature name.
-            feat_name = "endpoint::%s" % y_name
+            feat_name = "verb_ed::%s" % y_name
             # Get feature ID from name.
             feat_id = self.add_feature(feat_name)
             # Append feature.
             if feat_id != -1:
                 features.append(feat_id)
+
 
         return features
 		
