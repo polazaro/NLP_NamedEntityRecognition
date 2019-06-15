@@ -66,6 +66,14 @@ class ExtendedFeatures(IDFeatures):
             if feat_id != -1:
                 features.append(feat_id)
             
+        if str.find(word, ".") != -1:
+            # Generate feature name.
+            feat_name = "points::%s" % y_name
+            # Get feature ID from name.
+            feat_id = self.add_feature(feat_name)
+            # Append feature.
+            if feat_id != -1:
+                features.append(feat_id)
             
         #If it ends with a point
 #        if str.endswith(word, "."):
