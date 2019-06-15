@@ -46,6 +46,25 @@ class ExtendedFeatures(IDFeatures):
             # Append feature.
             if feat_id != -1:
                 features.append(feat_id)
+                
+        #If there the word ends with -ed   
+        if str.endswith(word,'ed'):
+            # Generate feature name.
+            feat_name = "verb_ed::%s" % y_name
+            # Get feature ID from name.
+            feat_id = self.add_feature(feat_name)
+            # Append feature.
+            if feat_id != -1:
+                features.append(feat_id)
+        #If there the word ends with -ly      
+        if str.endswith(word,'ly'):
+            # Generate feature name.
+            feat_name = "adverb_ly::%s" % y_name
+            # Get feature ID from name.
+            feat_id = self.add_feature(feat_name)
+            # Append feature.
+            if feat_id != -1:
+                features.append(feat_id)
             
             
         #If it ends with a point
@@ -68,15 +87,7 @@ class ExtendedFeatures(IDFeatures):
 #            if feat_id != -1:
 #                features.append(feat_id)
                 
-        #If there is a capital letter at the beggining
-        if str.endswith(word,'ed'):
-            # Generate feature name.
-            feat_name = "verb_ed::%s" % y_name
-            # Get feature ID from name.
-            feat_id = self.add_feature(feat_name)
-            # Append feature.
-            if feat_id != -1:
-                features.append(feat_id)
+
 
 
         return features
